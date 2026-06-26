@@ -1,12 +1,10 @@
 application:
   name: pocketbase
   pods:
-  - name: app
-    image: ghcr.io/muchobien/pocketbase:latest
-    path: /
-    servicePorts:
-    - 8090
-    volumes:
-    - name: pocketbase-data
-      mountPath: /pb/pb_data
-      size: 5Gi
+    - name: app
+      image: "registry.nexlayer.io/user_01kece1xyh817dwff7wnarhkxd/pocketbase:9f0542f-fix1"
+      path: /pb_data
+      servicePorts:
+        - 8090
+      vars:
+        PORT: "8090"
