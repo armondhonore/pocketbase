@@ -103,6 +103,19 @@ func main() {
 	// GitHub selfupdate
 	ghupdate.MustRegister(app, app.RootCmd, ghupdate.Config{})
 
+	// redirect the bare root "/" to the admin dashboard so the public URL
+	// returns a 302 (PocketBase has no root handler otherwise → 404).
+	app.OnServe().Bind(&hook.Handler[*core.ServeEvent]{
+		Func: func(e *core.ServeEvent) error {
+			e.Router.GET("/", func(re *core.RequestEvent) error {
+				return re.Redirect(http.StatusFound, "/_/")
+			})
+
+			return e.Next()
+		},
+		Priority: -999, // bind before the catch-all static route below
+	})
+
 	// static route to serves files from the provided public dir
 	// (if publicDir exists and the route path is not already defined)
 	app.OnServe().Bind(&hook.Handler[*core.ServeEvent]{
