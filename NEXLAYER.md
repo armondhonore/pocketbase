@@ -38,13 +38,15 @@ The agent generates this; you can edit it freely.
 application:
   name: pocketbase
   pods:
-    - name: app
-      image: "registry.nexlayer.io/user_01kece1xyh817dwff7wnarhkxd/pocketbase:19f0597fee3"
-      path: /pb_data
-      servicePorts:
-        - 8090
-      vars:
-        PORT: "8090"
+  - name: app
+    image: ghcr.io/muchobien/pocketbase:latest
+    path: /
+    servicePorts:
+    - 8090
+    volumes:
+    - name: pocketbase-data
+      mountPath: /pb/pb_data
+      size: 5Gi
 ```
 
 **Common edits:**
