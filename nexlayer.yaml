@@ -2,7 +2,7 @@ application:
   name: pocketbase
   pods:
   - name: app
-    image: ghcr.io/muchobien/pocketbase:latest
+    image: "# filled by pipeline"
     path: /
     servicePorts:
     - 8090
