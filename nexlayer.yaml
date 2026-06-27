@@ -2,7 +2,7 @@ application:
   name: pocketbase
   pods:
   - name: app
-    image: "registry.nexlayer.io/user_01kece1xyh817dwff7wnarhkxd/pocketbase@sha256:c15ffe679edab5cbc6a9f409d6165a6efd99af07be0b46309caa98a62e25cb3a"
+    image: "registry.nexlayer.io/user_01kece1xyh817dwff7wnarhkxd/pocketbase:19f07c8f6d4"
     path: /
     servicePorts:
     - 8090
